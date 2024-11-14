@@ -1,6 +1,7 @@
 <!-- App.svelte -->
 <script>
     import './index.css'
+    import './global.css'
     import { onMount } from 'svelte';
     import { appState } from './stores/appState';
     import { IsFirstLoad } from '../wailsjs/go/main/App';
