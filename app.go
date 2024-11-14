@@ -8,7 +8,6 @@ import (
 	"os/exec"
 )
 
-// AppState struct to hold all our JSON data
 type AppState struct {
     FilePath  string `json:"filepath"`
     FirstLoad bool   `json:"firstLoad"`
@@ -25,7 +24,6 @@ func NewApp() *App {
 
 func (a *App) startup(ctx context.Context) {
     a.ctx = ctx
-    // Initialize state on startup
     if !a.stateFileExists() {
         a.SaveState(&AppState{FirstLoad: true})
     }
@@ -84,7 +82,6 @@ func (a *App) CheckSRConfigs(status bool) error {
         state.SRConfigs = make(map[string]bool)
     }
 
-    // Set the SR configs status
     state.SRConfigs["enabled"] = status
 
     return a.SaveState(state)
