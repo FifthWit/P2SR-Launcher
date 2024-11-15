@@ -8,7 +8,7 @@ export function IsFirstLoad():Promise<boolean>;
 
 export function LoadState():Promise<main.AppState>;
 
-export function PlayPortal2():Promise<void>;
+export function PlayPortal2(arg1:boolean):Promise<string>;
 
 export function SaveFilePath(arg1:string):Promise<void>;
 

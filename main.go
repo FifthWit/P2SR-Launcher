@@ -19,6 +19,8 @@ func main() {
         Title:  "P2SR Launcher",
         Width:  1024,
         Height: 768,
+        MinWidth: 1080,
+        MinHeight: 600,
         AssetServer: &assetserver.Options{
             Assets: assets,
         },
@@ -27,13 +29,13 @@ func main() {
         Bind: []interface{}{
             app,
         },
-Windows: &windows.Options{
-    WindowIsTranslucent: true,
-    BackdropType:        windows.Acrylic,
-    DisableWindowIcon:   false,
-    DisableFramelessWindowDecorations: false,
-    Theme: windows.SystemDefault,
-},
+        Windows: &windows.Options{
+            WindowIsTranslucent: true,
+            BackdropType:        windows.Acrylic,
+            DisableWindowIcon:   false,
+            DisableFramelessWindowDecorations: false,
+            Theme: windows.SystemDefault,
+        },
     })
 
     if err != nil {

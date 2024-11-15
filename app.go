@@ -87,36 +87,26 @@ func (a *App) CheckSRConfigs(status bool) error {
     return a.SaveState(state)
 }
 
-func ValidateP2(filepath string) string {
-    cfgPath := filepath + "/portal2/cfg/autoexec.cfg"
-    command := `echo "hello world"`
-    err := utils.AddCommand(cfgPath, command)
-    if err != nil {
-        return err.Error()
-    }
-    return "Command added successfully"
-}
-
-func (a *App) PlayPortal2() {
+func (a *App) PlayPortal2(override bool) (string, error) {
     state, err := a.LoadState()
     if err != nil {
-        println("Error loading state:", err)
-        return
+        return "", err
     }
-    println("FilePath:", state.FilePath)
-	if state.FilePath == "" {
-		println("File path is not set.")
-		return
-	}
-
-	ValidateP2(state.FilePath)
-
-	cmd := exec.Command(state.FilePath + "/portal2.exe")
-	if err := cmd.Start(); err != nil {
-		println("Error starting Portal 2:", err)
-		return
-	}
-	println("Portal 2 started successfully.")
+    if state.FilePath == "" {
+        return "File path is not set.", nil
+    }
+    valid, err := utils.HashSar(state.FilePath + `/portal2/sar.dll`)
+    if err != nil {
+        return "", err
+    }
+    if !valid && !override {
+        return "Invalid SAR hash.", nil
+    }
+    cmd := exec.Command(state.FilePath+"/portal2.exe", "-novid")
+    if err := cmd.Start(); err != nil {
+        return "", err
+    }
+    return "Portal 2 started successfully.", nil
 }
 
 
