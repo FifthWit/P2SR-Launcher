@@ -14,8 +14,8 @@ export function LoadState() {
   return window['go']['main']['App']['LoadState']();
 }
 
-export function PlayPortal2(arg1) {
-  return window['go']['main']['App']['PlayPortal2'](arg1);
+export function PlayPortal2(arg1, arg2) {
+  return window['go']['main']['App']['PlayPortal2'](arg1, arg2);
 }
 
 export function SaveFilePath(arg1) {

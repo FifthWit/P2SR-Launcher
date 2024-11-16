@@ -4,8 +4,10 @@ import (
 	"Portal-2-Launcher/utils"
 	"context"
 	"encoding/json"
+	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 type AppState struct {
@@ -87,22 +89,29 @@ func (a *App) CheckSRConfigs(status bool) error {
     return a.SaveState(state)
 }
 
-func (a *App) PlayPortal2(override bool) (string, error) {
+func (a *App) PlayPortal2(override bool, args string) (string, error) {
     state, err := a.LoadState()
-    if err != nil {
+    if (err != nil) {
         return "", err
     }
     if state.FilePath == "" {
         return "File path is not set.", nil
     }
     valid, err := utils.HashSar(state.FilePath + `/portal2/sar.dll`)
-    if err != nil {
+    if (err != nil) {
         return "", err
     }
     if !valid && !override {
         return "Invalid SAR hash.", nil
     }
-    cmd := exec.Command(state.FilePath+"/portal2.exe", "-novid")
+
+    // Split args string into a slice of arguments
+    argList := strings.Fields(args)
+    cmd := exec.Command(state.FilePath+"/portal2.exe", argList...)
+    
+    // Log the command and arguments
+    fmt.Printf("Running command: %s %v\n", cmd.Path, cmd.Args)
+
     if err := cmd.Start(); err != nil {
         return "", err
     }
