@@ -5,8 +5,8 @@
     import Sidebar from '@components/Sidebar.svelte';
     import Newsfeed from '@components/Newsfeed.svelte';
     import { Button } from "$lib/components/ui/button";
-    import { Settings } from 'lucide-svelte';
     import Dialog from './Dialog.svelte';
+    import Settings from '@components/Settings.svelte';
     let dialog
     let ValidPortal2 = true;
 
@@ -42,7 +42,7 @@
                             <img src="/src/assets/images/portal2.png" alt="" class="w-[40px] rounded-lg mr-3">
                             Play Portal 2
                         </button>
-                        <button on:click={() => handlePlayPortal2(true)} class="bg-black bg-opacity-10 hover:bg-opacity-15 duration-150 transition-all text-3xl z-10 p-4 rounded-r-lg"><Settings /></button>
+                        <Settings />
                     </div>
                 </div>
             </div>
