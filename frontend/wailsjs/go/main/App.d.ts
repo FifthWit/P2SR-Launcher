@@ -10,6 +10,8 @@ export function LoadState():Promise<main.AppState>;
 
 export function PlayPortal2(arg1:boolean,arg2:string):Promise<string>;
 
+export function SaveAutoreset(arg1:Array<number>,arg2:string):Promise<string>;
+
 export function SaveFilePath(arg1:string):Promise<void>;
 
 export function SaveState(arg1:main.AppState):Promise<void>;

@@ -1,10 +1,10 @@
-import fs from 'fs';
 import { SourceDemoParser } from '@nekz/sdp';
 import { readSarMessages, isSarMessage, SarDataType } from '@nekz/sdp/utils';
-export function parseMtriggers(demoPath) {
+
+export function parseMtriggers(content) {
     const demo = SourceDemoParser.default()
         .setOptions({ userCmds: true })
-        .parse(fs.readFileSync(demoPath));
+        .parse(content);
 
     const messages = readSarMessages(demo);
     const sr = messages.find(isSarMessage(SarDataType.SpeedrunTime));
@@ -17,4 +17,15 @@ export function parseMtriggers(demoPath) {
         totalLength += split;
     }
     return mtriggers;
+}
+
+export function parseTitle(content) {
+    const demo = SourceDemoParser.default()
+        .setOptions({ userCmds: true })
+        .parse(content);
+
+    const messages = readSarMessages(demo);
+    const sr = messages.find(isSarMessage(SarDataType.SpeedrunTime));
+
+    return sr.splits.at(-1).name.replace(' - Flags', '');
 }

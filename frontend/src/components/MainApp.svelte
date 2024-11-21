@@ -35,10 +35,6 @@
         <Button class="bg-destructive" on:click={() => PlayPortal2(true)}>Play Portal 2 anways</Button>
     </div>
 </Dialog>
-<div class="flex flex-col h-screen">
-    <Navbar />
-    <div class="flex flex-1">
-        <Sidebar />
         <main class="flex-1 w-full flex flex-col justify-between">
             <div class="relative overflow-hidden flex items-center justify-center p-8 flex-col">
                 <div class="flex flex-col m-4 text-center *:m-2">
@@ -54,8 +50,6 @@
             </div>
             <Newsfeed />
         </main>
-    </div>
-</div>
 
 <style>
 @font-face {

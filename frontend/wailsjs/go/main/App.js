@@ -18,6 +18,10 @@ export function PlayPortal2(arg1, arg2) {
   return window['go']['main']['App']['PlayPortal2'](arg1, arg2);
 }
 
+export function SaveAutoreset(arg1, arg2) {
+  return window['go']['main']['App']['SaveAutoreset'](arg1, arg2);
+}
+
 export function SaveFilePath(arg1) {
   return window['go']['main']['App']['SaveFilePath'](arg1);
 }
