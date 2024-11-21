@@ -25,6 +25,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "@nekz/sdp": "^0.10.0",
     "dotenv": "^16.4.5",
     "svelte-dialog": "^0.2.0",
     "svelte-persisted-store": "^0.12.0"
