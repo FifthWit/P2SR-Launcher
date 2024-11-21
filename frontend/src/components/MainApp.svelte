@@ -8,6 +8,7 @@
     import { Button } from "$lib/components/ui/button";
     import Dialog from './Dialog.svelte';
     import Settings from '@components/Settings.svelte';
+    import "../assets/fonts/D-DIN.otf";
 
     $: {
         console.log($args);
@@ -40,10 +41,10 @@
         <Sidebar />
         <main class="flex-1 w-full flex flex-col justify-between">
             <div class="relative overflow-hidden flex items-center justify-center p-8 flex-col">
-                <div class="flex flex-col m-4">
-                    <h1 class="text-3xl font-bold underline relative z-10">Welcome.</h1>
+                <div class="flex flex-col m-4 text-center *:m-2">
+                    <h1 class="text-3xl font-bold underline relative">Welcome.</h1>
                     <div class="flex flex-row">
-                        <button on:click={() => handlePlayPortal2(false, $args)} class="flex flex-row items-center bg-green-500 hover:bg-green-600 duration-200 transition-all text-3xl z-10 p-4 rounded-l-lg">
+                        <button on:click={() => handlePlayPortal2(false, $args)} class="p2-font font-bold flex flex-row items-center shadow-lg bg-green-500 hover:bg-green-600 duration-200 transition-all text-3xl z-10 p-4 rounded-l-lg">
                             <img src={portalImage} alt="" class="w-[40px] rounded-lg mr-3">
                             Play Portal 2
                         </button>
@@ -55,3 +56,16 @@
         </main>
     </div>
 </div>
+
+<style>
+@font-face {
+    font-family: 'D-DIN';
+    src: url('../assets/fonts/D-DIN.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:global(.p2-font) {
+    font-family: 'D-DIN', sans-serif;
+}
+</style>
