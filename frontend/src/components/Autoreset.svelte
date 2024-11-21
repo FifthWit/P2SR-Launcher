@@ -50,18 +50,18 @@
     }
 </script>
 
-<div class="w-full flex flex-col items-center justify-center">
-    <h2 class="mb-20 font-bold text-4xl">Create Autoreset File!</h2>
-    <div class="flex flex-col items-center justify-center *:m-2">
-        <Toaster />
-
+<Toaster />
+<main class="flex-1 w-full flex flex-col items-center">
+    <h2 class="font-bold text-4xl my-20">Create Autoreset File!</h2>
+    <div class="flex flex-col items-center w-full max-w-md *:m-2">
         <Label>Demo:</Label>
         <Input
             type="file"
-            class="bg-opacity-20 bg-black"
+            class="bg-opacity-20 bg-black w-full"
             on:change={handleFileChange}
         />
         <Button
+            class="w-full"
             on:click={() => {
                 parseFile();
                 toast.success('Mtriggers Found!', {
@@ -69,7 +69,7 @@
                 });
             }}>Parse File</Button
         >
-        <Label class="flex items-center justify-center"
+        <Label class="flex items-center justify-center w-full"
             >Add padding {JSON.stringify(parseInt(padding)) | 'None'}
             <HoverCard.Root
                 ><HoverCard.Trigger>
@@ -86,12 +86,13 @@
             </HoverCard.Root></Label
         >
         <Input
-            class="bg-opacity-25 bg-black"
+            class="bg-opacity-25 bg-black w-full"
             placeholder="Padding"
             bind:value={padding}
         />
 
         <Button
+            class="w-full"
             on:click={() => {
                 submitAutoreset()
                     .then((result) => {
@@ -107,4 +108,4 @@
             }}>Add Autoreset</Button
         >
     </div>
-</div>
+</main>
